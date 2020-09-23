@@ -32,11 +32,11 @@ public class StudentController {
     @ResponseBody
     public List<ScoreResult> inquireY(){
         List<Student> students = stdentService.stuByid();
-        List<ScoreResult> list = new ArrayList<ScoreResult>();
+        List<ScoreResult> li = new ArrayList<ScoreResult>();
         for (Student student : students) {
             ScoreResult scoreResult = new ScoreResult(student.getScore(),student.getName());
             list.add(scoreResult);
         }
-        return list;
+        return li;
     }
 }
