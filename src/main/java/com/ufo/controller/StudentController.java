@@ -37,7 +37,7 @@ public class StudentController {
             ScoreResult scoreResult = new ScoreResult(student.getScore(),student.getName());
             scoreResults.add(scoreResult);
         }
-        //123
+        //456
         return scoreResults;
     }
 }
