@@ -1,0 +1,6 @@
+com\ufo\controller\StudentController.class
+com\ufo\service\impl\StdentServiceImpl.class
+com\ufo\entity\ScoreResult.class
+com\ufo\dao\StudentDao.class
+com\ufo\entity\Student.class
+com\ufo\service\StdentService.class

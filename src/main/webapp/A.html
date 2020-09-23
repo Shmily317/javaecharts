@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/echarts.common.min.js"></script>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+
+</head>
+<body>
+<div id="main" style="width: 800px;height: 600px"></div>
+
+</body>
+<script>
+    var myChart = echarts.init(document.getElementById("main"))
+    myChart.setOption({
+        title:{
+            text:"学生"
+        },
+        tooltip:{},
+        legend:{
+            data:["成绩"]
+        },
+        xAxis:{
+            data:[]
+        },
+        yAxis:{
+
+        },
+        series:[{
+            name:"成绩",
+            type:"bar",
+            data:[]
+        }]
+    });
+    myChart.showLoading();//加载动画！！！
+    var names = []
+    var nums = []
+
+    $.ajax({
+        type:"get",
+        url:"a.do",
+        dataType:"json",
+        success:function (result) {
+            console.log(result)
+            if (result) {
+                for (var i = 0; i < result.length; i++) {
+                    names.push(result[i].name);
+                    nums.push(result[i].score)
+                }
+                myChart.hideLoading()
+                myChart.setOption({
+                    xAxis:{
+                        data:names
+                    },
+                    series:[{
+                        name:"成绩",
+                        data:nums
+                    }]
+                })
+
+            }
+        },
+        error:function (errMsg) {
+            alert("数据加载失败")
+            myChart.hideLoading()
+        }
+
+    })
+</script>
+
+</html>
